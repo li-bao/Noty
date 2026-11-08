@@ -1,0 +1,67 @@
+{
+  "algorithm": "LFES-12122",
+  "version": "1.0-draft",
+  "base_symbols": {
+    "text": "1",
+    "password": "2",
+    "copy_symbol": "C",
+    "insertion_symbol": "+"
+  },
+  "forward_vectors": {
+    "0C": "12",
+    "1C": "1122",
+    "1C1+": "12122",
+    "2C": "1122112222",
+    "2C2+": "121222112222",
+    "3C": "112211222222111122222222",
+    "3C3+": "121222211222222111122222222"
+  },
+  "reverse_decryption_flow": [
+    {
+      "step": 0,
+      "name": "initial_ciphertext",
+      "value": "121222211222222111122222222"
+    },
+    {
+      "step": 1,
+      "operation": "remove_3+",
+      "expected": "112211222222111122222222"
+    },
+    {
+      "step": 2,
+      "operation": "remove_3C",
+      "expected": "121222112222"
+    },
+    {
+      "step": 3,
+      "operation": "remove_2+",
+      "expected": "1122112222"
+    },
+    {
+      "step": 4,
+      "operation": "remove_2C",
+      "expected": "12122"
+    },
+    {
+      "step": 5,
+      "operation": "remove_1+",
+      "expected": "1122"
+    },
+    {
+      "step": 6,
+      "operation": "remove_1C",
+      "expected": "12"
+    },
+    {
+      "step": 7,
+      "operation": "remove_0+_final",
+      "expected": "1"
+    }
+  ],
+  "specification_status": {
+    "original_vectors": "Validated",
+    "reversible_steps": "Validated",
+    "generalized_unicode_matrices": "Specification Incomplete",
+    "integration_mode": "Experimental Custom Layer"
+  }
+}
